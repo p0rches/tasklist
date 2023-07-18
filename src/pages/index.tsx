@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -28,6 +29,8 @@ export default function Home() {
     setTasks(updatedTasks);
   };
 
+  const currTime = dayjs().format("HH:mm:ss DD.MM.YY");
+
   return (
     <>
       <Head>
@@ -36,14 +39,15 @@ export default function Home() {
       </Head>
       <main className="flex min-h-screen flex-col items-center p-4">
         <div className="container">
-          <h1 className="font-extrabold text-black text-5xl">Tasks</h1>
+          <h1 className="font-extrabold text-slate-900 text-5xl">Tasks</h1>
+          <div className="text-slate-600">{`Last updated: ${currTime}`}</div>
           {tasks.length === 0 && (
             <div className="pt-2">
               <div className="italic">No tasks...</div>
             </div>
           )}
           {tasks.length > 0 && (
-            <div className="pt-2">
+            <div className="pt-2 pl-2">
               {tasks.map((task, idx) => (
                 <div
                   key={idx}
@@ -68,10 +72,10 @@ export default function Home() {
               ))}
             </div>
           )}
-          <div>
+          <div className="border-t max-w-fit py-2">
             <input
               placeholder="Enter a task"
-              className="border-none text-slate-900 outline-none"
+              className="border-none text-2xl text-slate-900 outline-none"
               value={item}
               onChange={(e) => setItem(e.target.value)}
             />
