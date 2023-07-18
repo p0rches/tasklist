@@ -5,6 +5,7 @@ import { useState } from "react";
 interface Task {
   content: string;
   checked: boolean;
+  createdAt: string;
 }
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       const newTask: Task = {
         content: item,
         checked: false,
+        createdAt: dayjs().format("HH:mm")
       };
       setTasks([...tasks, newTask]);
       setItem("");
@@ -29,7 +31,7 @@ export default function Home() {
     setTasks(updatedTasks);
   };
 
-  const currTime = dayjs().format("HH:mm:ss DD.MM.YY");
+  const currTime = dayjs().format("HH:mm");
 
   return (
     <>
@@ -67,6 +69,9 @@ export default function Home() {
                     }
                   >
                     {task.content}
+                  </div>
+                  <div className="text-sm text-white hover:text-slate-600">
+                    {`Created: ${task.createdAt}`}
                   </div>
                 </div>
               ))}
