@@ -55,11 +55,11 @@ export default function Home() {
             </div>
           )}
           {tasks.length > 0 && (
-            <div className="pt-2 pl-2">
+            <div className="py-2 pl-2">
               {tasks.map((task, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-row items-center gap-1 text-2xl"
+                  className="flex flex-row items-center gap-2 text-2xl"
                 >
                   <input
                     type="checkbox"
