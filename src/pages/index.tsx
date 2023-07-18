@@ -31,6 +31,12 @@ export default function Home() {
     setTasks(updatedTasks);
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const currTime = dayjs().format("HH:mm");
 
   return (
@@ -83,6 +89,7 @@ export default function Home() {
               className="border-none text-2xl text-slate-900 outline-none"
               value={item}
               onChange={(e) => setItem(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
             <button
               className="p-2 bg-slate-200 shadow-2xl rounded-xl"
